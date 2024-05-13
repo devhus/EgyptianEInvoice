@@ -191,6 +191,11 @@ abstract class AbstractApi
             $headers['Authorization'] = 'Bearer '.$this->eta->token;
         }
 
+        if(isset($this->eta->onbehalfof))
+        {
+            $headers['onbehalfof'] = $this->eta->onbehalfof;
+        }
+
         if(is_array($params) && $paramsType == 'json' )
         {
             // Making sure if the passed $params was an string to just use it, or convert it to a string in case it was a array

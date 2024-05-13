@@ -52,17 +52,22 @@ class ETAInvoice
      */
     private $instances = [];
 
+    /**
+     * @var int|null
+     */
+    public $onbehalfof = null;
 
     /**
      * @param string|null $client_id Issued Client ID
      * @param string|null $client_secret Issued Client Secret
      * @throws EgyaptianEInvoiceException When no token is provided
      */
-    public function __construct(string $client_id, string $client_secret, string $env = '')
+    public function __construct(string $client_id, string $client_secret, string $env = '', int|null $onbehalfof = null)
     {
         $this->client_id = $client_id;
         $this->client_secret = $client_secret;
         $this->env = $env;
+        $this->onbehalfof = $onbehalfof;
         $this->generateToken();
     }
 
